@@ -1,70 +1,184 @@
-# Getting Started with Create React App
+#Github Action to Github Pages 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Create react app 
 
-In the project directory, you can run:
+- Create folder with your app name 
+- open it with cmd or gitbash
+if you are using npm (node pakage manager.
+- type npx create-react-app .
+------> (note write this command if you have create a folder already on your system (Incase you did not created any folder yet follow the below given instruction )
+--> for creating react app with app folder
+--> Open your cmd by typing cmd on search bar of windws 
+and type :
+npx create-react-app Name_of_Your_App
 
-### `npm start`
+Creating Github Repositry 
+Now Create Go to Your Github  and create a repositry with same name to recoagnize easily
+Push Your code to github repo you have created by uing this commands 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Opening App Directory (Easiy Method)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Open the folder of your app and click header bar which is showing your path of your system;
+- do not delete the path but just click and type cmd
+you will in the that directory easily ->
+or 
+get out of folder of your app and right click on it by holding shift button (first press shif and hold and right click on your app folder ) you will gitbash option or open with powershell click on it.
+your directory will be open 
 
-### `npm test`
+Now Push Code to master branch :
+1. check status of your app:
+ run command in you cmd : git status
+2. initilize the repositry 
+ run command in your cmd: git init
+3. now adding the changes
+ run command in you cmd : git add .
+2. commit the changes  
+ run command in your cmd: git commit -m "my first commit"
+3. now go to your repositry and copy the repositry link (HOW YOU WILL DO THAT ---> GO YOUR REPOSITRY AND ON RIGHTHAND SIDE YOU WILL FIND THE BUTTON WITH GREEN COLOR OF DROPDOWN WHICH SAYS "CODE" CLICK ON IT AND COPY THE HTTPS: LINK
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. Now back to cmd  : run this command to add the path github cloud remote repositry:
+run command  : git remote add origin "https://github.com/ikishorkumar/reactapp.git"
+you have to replace the HTTPS url with your repositry URL
 
-### `npm run build`
+5.last to send this whole data to this repositry :
+run command : git push -u origin master
+here master is branch name you can use your branch i will suggest you us same
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Create Workflow:
+just go your github repositry and click on action tab it will automaticly the workflow for you but (we need node.js workflow ifit finds that the one with green logo of node it's just node.js (not the publish one) we need node.js one with green logo) select that one it will open a  yml file do nothing click on commmit on right handside setting will remain as defualt as it is :
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Now click on your repositry go settings and go down to the github pages section you will find your site is hosted at the https : if not then just click the drop down which shows your branch name on top left hand side in row of code buttton just click on that dropdown
+now type gh-pages  and hit enter 
+done now go settings again and find the section of github pages you will see a link .
+we will need that link first we will open our code with any code editor and open package.json and paste (  "homepage": "https://ikishorkumar.github.io/reactapp",
+) it on top of this "name" : "your-app-name" : 
+Now your file will look like this:
+{  "homepage": "https://ikishorkumar.github.io/reactapp",
+    "name" : "your-app-name",
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+->
+now save this and open your cmd and run this command to install gh-pages
+run commad : npm install --save gh-pages
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+now just open you package.json file again and add these two lines to secrets section: 
+after this line of ejection     "eject": "react-scripts eject",
+"predeploy": "npm run build",
+"deploy": "gh-pages -d build"
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+and save it Now it comes the triky part : 
+before pusing this data to git repositry you might pull the changes that you have done the git repositry :
+open cmd run command : git pull 
+it get data from git cloud repositry now rn these commads :
 
-## Learn More
+git status
+git init
+git add .
+git commit -m "gh-pages setup "
+git push origin master.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+" Now go to worklfow to setup automation CI/CD"
+just check your version of node on cmd by typing : 
+node -v
+and hit enter
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+Now go to this link https://github.com/settings/tokens
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+and click on genrate New Token that are called personal tocken which are nessary :
+in name field type name of your token : deploy_access
 
-### Advanced Configuration
+and check the 4 boxes inside select scopes :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+repo: status
+repo_deployment
+public_repo
+repo_invite
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+just select those above and click on genrate tocken on bottom of that form.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+and now you will see the string with mixed numbers and characters
+
+looks like this : 5f2b6b********************************
+copy that :
+
+now go to your repositry back and click on setting and go to secrets
+and hit new tocken a form will appear with two fieds name and value :
+name of your secret  : 
+i am using the name : ACTIONS_DEPLOY_ACCESS_TOKEN
+paste the personal access token that we have genrated above in value filed : 5f2b6b********************************
+
+hit add secret
+
+----->
+Now go to action and see your workflow click on yml file and click on penicl to edit 
+
+DO not Copy this just type this avoid syntax errors:
+Note:
+add your usename of github 
+add your email of github 
+and other remain same if you ahve given the secret a differnt name then replae secrets.ACTIONS_DEPLOY_ACCESS_TOKEN this with secrets.Your_Name_of_Secret 
+and commit the changes.
+----->
+
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
+    - name: Deploy
+      run: |
+        git config --global user.name 'ikishorkumar'
+        git config --global user.email 'ikishorkumarofficial@gmail.com'
+        git remote set-url origin https://${github_token}@github.com/${repository}
+        npm run deploy
+      env:
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        repository: ${{ github.repository }}
+
+
+
+
+hit commit changes and commit it . and go actions and see your workflow working  correctly 
+for this your repositry must be public  for priviate repositry github action to github pages : 
+you might visit this one : 
+https://github.com/JamesIves/github-pages-deploy-action
+comunity help is there.
+
+
+
+
